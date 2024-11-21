@@ -13,8 +13,8 @@ namespace Abstracciones.Modelos
     }
     public class PerfilBD:Perfil
     {        
-        public Guid? Curriculum { get; set; }
-        public Guid? Foto { get; set; }
+        public Guid Curriculum { get; set; }
+        public Guid Foto { get; set; }
 
     }
     public class PerfilRequest:Perfil

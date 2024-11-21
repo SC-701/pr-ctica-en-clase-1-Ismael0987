@@ -13,8 +13,9 @@ namespace Flujo
         private IDocumentoDA _documentoDA;
         private IDocumentoServicio _documentoServicio;
 
-        public PerfilFlujo(IDocumentoServicio documentoServicio, IDocumentoDA documentoDA)
+        public PerfilFlujo(IPerfilDA perfilDA, IDocumentoServicio documentoServicio, IDocumentoDA documentoDA)
         {
+            _perfilDA = perfilDA;
             _documentoServicio = documentoServicio;
             _documentoDA = documentoDA;
         }
