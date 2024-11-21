@@ -10,14 +10,14 @@ namespace API.Controllers
     [ApiController]
     public class CorreoController : ControllerBase, ICorreoController
     {
-        private ICorreoFlujo _documentoFlujo;
+        private readonly ICorreoFlujo _documentoFlujo;
 
         public CorreoController(ICorreoFlujo documentoFlujo)
         {
             _documentoFlujo = documentoFlujo;
         }
         [HttpPost]
-        public async Task<IActionResult> Enviar([FromBody]Correo correo)
+        public async Task<IActionResult> enviar([FromBody]Correo correo)
         {
             var resultado = _documentoFlujo.Enviar(correo);
             return Ok();
