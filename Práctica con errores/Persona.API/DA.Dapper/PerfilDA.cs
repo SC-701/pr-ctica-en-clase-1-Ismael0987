@@ -33,11 +33,24 @@ namespace DA.Dapper
             return resultadoConsulta;
         }
 
-        public async Task<PerfilBD?> ObtenerPerfil(Guid Id)
+        //public async Task<PerfilBD> ObtenerPerfil(Guid Id)
+        //{
+        //string sql = @"ObtenerPerfil";
+        //var resultadoConsulta = await _sqlConnection.QueryAsync<PerfilBD>(sql, new { IdPersona = Id });
+        //if (resultadoConsulta == null)
+        //return null;
+        //return resultadoConsulta.FirstOrDefault();
+        //}
+        public async Task<PerfilBD> ObtenerPerfil(Guid Id)
         {
             string sql = @"ObtenerPerfil";
             var resultadoConsulta = await _sqlConnection.QueryAsync<PerfilBD>(sql, new { IdPersona = Id });
-            return resultadoConsulta.FirstOrDefault();
+            var perfil = resultadoConsulta?.FirstOrDefault();
+            if (perfil == null)
+            {
+                throw new InvalidOperationException("No se encontró el perfil para el ID proporcionado.");
+            }
+            return perfil;
         }
     }
 }
